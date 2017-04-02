@@ -3,21 +3,23 @@ import os
 from os import path
 import random
 
-#def check_file(path='./',ext=''):
-#    _filelist = os.listdir(path)
-#    ch_e = []
-#    for _file in _filelist:
-#        _root, _ext = os.path.splitext(_file)
-#        if  _ext == ext:
-#            ch_e.append(_file)
-#        else:
-#            pass
-#    return ch_e
-#
-#jpglist = check_file(path='dataset', ext='.jpg')
+def check_file(path='./',ext=''):
+    _filelist = os.listdir(path)
+    ch_e = []
+    for _file in _filelist:
+        _root, _ext = os.path.splitext(_file)
+        if  _ext == ext:
+            ch_e.append(_file)
+        else:
+            pass
+    return ch_e
+
 
 rootpath = path.dirname(path.abspath(__file__)) + '/'
-imagepaths = os.listdir(rootpath+'dataset')
+#imagepaths = os.listdir(rootpath+'dataset')
+path = rootpath + 'dataset'
+imagepaths = check_file(path=path, ext='.jpg')
+print(imagepaths)
 val = random.sample(imagepaths,int(len(imagepaths)/5))
 train = imagepaths
 for item in val:
